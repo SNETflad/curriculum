@@ -1,0 +1,40 @@
+問1
+ルートブリッジは
+「switch3」
+
+問2
+
+・switch1
+F0/1 DP
+各コリジョンドメインの1つが必ず指定ドメイン、switch2のF0/1はRPに指定されているため、こちらが指定ドメインになる。
+
+F0/2 RP　
+経路は二つ
+1.switch1-switch3:100
+2.switch1-switch2-switch4-switch3:19+100+100=219
+1の方がルートパスコストの値が小さいためF0/2がルートポート
+
+
+・switch2
+F0/1 RP
+1.switch2-switch1-switch3:19+100=119
+2.switch2-switch4-switch3:100+100=200
+1の方がルートパスコストの値が小さいためF0/1がルートポート
+
+F0/2 BP
+どのポートにも選出されていないため、switch2のF0/2がブロッキングポートとなる。
+
+・switch3
+E0/1 DP
+E0/2 DP
+ルートブリッジのポートは全て指定ポートになる。
+
+・switch4
+E0/1 DP
+switch2のF0/2-switch4のE0/1どちらのポートも未指定状態のため、ブリッジIDが小さいswitch4のE0/1が指定ドメインとなる。
+
+E0/2 RP
+1.switch4-switch3:100
+2.switch4-switch2-switch1-switch3:100+19+100=219
+1の方がルートパスコストの値が小さいためF0/2がルートポート
+
